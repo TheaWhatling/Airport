@@ -3,4 +3,3 @@ ORY,Paris-Orly,629,379
 MAD,Adolfo Suarez Madrid-Barajas,1428,1151
 AMS,Amsterdam Schiphol,526,489
 CAI,Cairo International,3779,3584
-
