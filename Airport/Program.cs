@@ -66,5 +66,31 @@ namespace Airport
 
 
         }
+
+        //When the program is used, the following details will need to be entered:
+        //• UK airport
+        //• overseas airport
+        //• type of aircraft
+        //• number of first-class seats
+        //• price of a first-class seat
+        //• price of a standard-class seat.
+
+        /*need to create arrays/ an array to hold data about; 
+         * plane type
+         * running cost per seat per 100 km
+         * maximum flight range(km)
+         * capacity if all seats are standard-class
+         * minimum number of firstclass seats(if there are any)
+        */
+
+        /*
+          Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
+Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
+distance between the UK airport and the overseas airport / 100
+Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
+Flight income number of first-class seats × price of a first-class seat + number of
+standard-class seats × price of a standard-class seat
+Flight profit flight income - flight cost 
+        */
     }
 }
