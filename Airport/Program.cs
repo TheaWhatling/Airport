@@ -9,7 +9,7 @@ namespace Airport
         static string[] name;
         static string[] distanceL;
         static string[] distanceB;
-
+         
         static void Main(string[] args)
         {
             Console.WriteLine("");
