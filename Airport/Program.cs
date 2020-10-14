@@ -77,6 +77,7 @@ namespace Airport
             int price1stseat;
             int pricestandardseat;
             string option;
+            // will need more variables for calculate and clear returns
 
             do
             {
@@ -96,6 +97,7 @@ namespace Airport
                 if (option == "1")
                 {
                    ukname = ukairport();
+                    // ask what would like to do next? give options again?
                 }
 
                 if (option == "2")
@@ -125,14 +127,14 @@ namespace Airport
 
                 if (option == "7")
                 {
-                    // will need paramenters // check if missing inputs
-                    calculate();
-                    // what are passing back?
+                              // will need paramenters // check if missing inputs
+                    //calculate();
+                              // what are passing back?
                 }
 
                 if (option == "8")
                 {
-                    clear();
+                    //clear();
                 }
 
             } while (option != "9"); // what happens after they exit? // exit "message" needed here (clear as well?)
@@ -144,19 +146,40 @@ namespace Airport
             Console.WriteLine("please enter Uk airports name");
             ukname = Console.ReadLine();
 
-            //if (ukname = );
-
             return ukname;
 
-          // check exists !!!!!!!!!!!!!!!!!!!!!!!!!!!
+          // check exists ? between 2 options
         }
 
         static string overseaairport()
         {
             string OSairportname;
+            bool validAirport = false;
+            do
+            {
 
-            Console.WriteLine("please enter overseas airports name");
-            OSairportname = Console.ReadLine();
+
+                Console.WriteLine("please enter overseas airports name");
+                OSairportname = Console.ReadLine();
+
+                validAirport = false;
+
+                for (int s = 0; s < name.Length; s = s + 1)
+                {
+                    if (name[s] == OSairportname)
+                    {
+                        validAirport = true;
+                    }
+
+
+                }
+
+                if (validAirport == false)
+
+                {
+                    Console.WriteLine("doesnt exist");
+                }
+            } while (validAirport == false);
 
             return OSairportname;
 
@@ -208,36 +231,28 @@ namespace Airport
 
         }
 
-        static string calculate()
-        {
-            // pass parameters
+       // static string calculate()
+       // {
+                 // pass parameters
 
-            /*
-         Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
-         Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
-         distance between the UK airport and the overseas airport / 100
-         Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
-         Flight income number of first-class seats × price of a first-class seat + number of
-         standard-class seats × price of a standard-class seat
-         Flight profit flight income - flight cost 
-       */
+                 /*
+                 Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
+                 Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
+                 distance between the UK airport and the overseas airport / 100
+                 Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
+                 Flight income number of first-class seats × price of a first-class seat + number of
+                 standard-class seats × price of a standard-class seat
+                 Flight profit flight income - flight cost 
+                 */
 
-        }
+       //  }
 
-        static string clear()
-        {
-          // clear all inputs
+       //  static string clear()
+       //  {
+                 // clear all inputs
 
-        }
+       //  }
 
-
-        //When the program is used, the following details will need to be entered:
-        //• UK airport
-        //• overseas airport
-        //• type of aircraft
-        //• number of first-class seats
-        //• price of a first-class seat
-        //• price of a standard-class seat.
 
         /*need to create arrays/ an array to hold data about; 
          * plane type
