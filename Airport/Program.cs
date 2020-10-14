@@ -70,7 +70,14 @@ namespace Airport
 
         static void menu()
         {
+            string ukname;
+            string OSairportname;
+            string planetype;
+            int num1stseats;
+            int price1stseat;
+            int pricestandardseat;
             string option;
+
             do
             {
                 Console.WriteLine("enter option number:");
@@ -88,52 +95,47 @@ namespace Airport
 
                 if (option == "1")
                 {
-                    ukairport();
+                   ukname = ukairport();
                 }
 
                 if (option == "2")
                 {
-                    overseaairport();
+                    OSairportname = overseaairport();
                 }
 
                 if (option == "3")
                 {
-                    ();
+                    planetype = typeplane();
                 }
 
                 if (option == "4")
                 {
-                    ();
+                   num1stseats = Convert.ToInt32(numfirstseats());
                 }
 
                 if (option == "5")
                 {
-                    ();
+                   price1stseat = Convert.ToInt32(pricefirstseat());
                 }
 
                 if (option == "6")
                 {
-                    ();
+                   pricestandardseat = Convert.ToInt32(pricestanseat());
                 }
 
                 if (option == "7")
                 {
-                    // will need paramenters
-                    ();
+                    // will need paramenters // check if missing inputs
+                    calculate();
+                    // what are passing back?
                 }
 
                 if (option == "8")
                 {
-                    ();
+                    clear();
                 }
 
-                if (option == "9")
-                {
-                    ();
-                }
-
-
-            } while (option != "9"); // what happens after they exit?
+            } while (option != "9"); // what happens after they exit? // exit "message" needed here (clear as well?)
         }
         static string ukairport()
         {
@@ -141,6 +143,8 @@ namespace Airport
 
             Console.WriteLine("please enter Uk airports name");
             ukname = Console.ReadLine();
+
+            //if (ukname = );
 
             return ukname;
 
@@ -158,6 +162,75 @@ namespace Airport
 
             // check exists !!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
+
+        static string typeplane()
+        {
+            string planetype;
+
+            Console.WriteLine("please enter type of plane");
+            planetype = Console.ReadLine();
+
+            return planetype;
+
+            // check exists !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
+
+        static string numfirstseats()
+        {
+            string num1stseats;
+
+            Console.WriteLine("please enter then number of first class seats");
+            num1stseats = Console.ReadLine();
+             
+            return num1stseats;
+
+        }
+
+        static string pricefirstseat()
+        {
+            string price1stseat;
+
+            Console.WriteLine("please enter the current price of a first class seat");
+            price1stseat = Console.ReadLine();
+
+            return price1stseat;
+
+        }
+
+        static string pricestanseat()
+        {
+            string pricestandardseat;
+
+            Console.WriteLine("please enter the current price of a standard class seat");
+            pricestandardseat = Console.ReadLine();
+
+            return pricestandardseat;
+
+        }
+
+        static string calculate()
+        {
+            // pass parameters
+
+            /*
+         Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
+         Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
+         distance between the UK airport and the overseas airport / 100
+         Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
+         Flight income number of first-class seats × price of a first-class seat + number of
+         standard-class seats × price of a standard-class seat
+         Flight profit flight income - flight cost 
+       */
+
+        }
+
+        static string clear()
+        {
+          // clear all inputs
+
+        }
+
+
         //When the program is used, the following details will need to be entered:
         //• UK airport
         //• overseas airport
@@ -174,14 +247,5 @@ namespace Airport
          * minimum number of firstclass seats(if there are any)
         */
 
-        /*
-          Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
-          Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
-          distance between the UK airport and the overseas airport / 100
-          Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
-          Flight income number of first-class seats × price of a first-class seat + number of
-          standard-class seats × price of a standard-class seat
-          Flight profit flight income - flight cost 
-        */
     }
 }
