@@ -97,7 +97,7 @@ namespace Airport
                 if (option == "1")
                 {
                    ukname = ukairport();
-                    // ask what would like to do next? give options again?
+                    
                 }
 
                 if (option == "2")
@@ -142,13 +142,28 @@ namespace Airport
         static string ukairport()
         {
             string ukname;
+            bool validUKairportname = false;
+            do
+            {
+                Console.WriteLine("please enter Uk airports name");
+                ukname = Console.ReadLine();
 
-            Console.WriteLine("please enter Uk airports name");
-            ukname = Console.ReadLine();
+                validUKairportname = false;
+
+                if (ukname == "Liverpool John Lennon")
+                {
+                    validUKairportname = true;
+                }
+                
+
+                if (ukname == "Bournemouth International")
+                {
+                    validUKairportname = true;
+                }
+
+            } while (validUKairportname == false);
 
             return ukname;
-
-          // check exists ? between 2 options
         }
 
         static string overseaairport()
@@ -157,8 +172,6 @@ namespace Airport
             bool validAirport = false;
             do
             {
-
-
                 Console.WriteLine("please enter overseas airports name");
                 OSairportname = Console.ReadLine();
 
@@ -170,8 +183,6 @@ namespace Airport
                     {
                         validAirport = true;
                     }
-
-
                 }
 
                 if (validAirport == false)
@@ -179,6 +190,7 @@ namespace Airport
                 {
                     Console.WriteLine("doesnt exist");
                 }
+
             } while (validAirport == false);
 
             return OSairportname;
