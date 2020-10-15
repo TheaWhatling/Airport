@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FSharp.Compiler.Service" Version="37.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Airports.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

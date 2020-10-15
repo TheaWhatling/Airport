@@ -1,15 +1,26 @@
-﻿using System;
+﻿using FSharp.Compiler.SourceCodeServices;
+using System;
 using System.IO;
 
 namespace Airport
-{
+{ 
+    
     class Program
     {
         static string[] code;
         static string[] name;
         static string[] distanceL;
         static string[] distanceB;
-         
+
+        struct mediumnarrowbodyvalues
+        {
+         public int runningcostperseatper100km;
+         public int maximumflightrangekm;
+         public int capacityifallseatsarestandardclass;
+         public int minimumnumoffirstclassseats;
+        }
+        mediumnarrowbodyvalues point;
+
         static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -108,6 +119,15 @@ namespace Airport
                 if (option == "3")
                 {
                     planetype = typeplane();
+
+                    /*       Type         Running cost               Maximum flight            Capacity if all         Minimum
+                                          per seat per 100 km        range(km)                 seats are               number of firstclass 
+                                                                                               standard -class         seats(if there are any)                                                                  
+                       Medium narrow body         £8                  2650                         180                     8   
+                       Large narrow body          £7                  5600                         220                     10
+                       Medium wide body           £5                  4050                         406                     14
+                    */
+
                 }
 
                 if (option == "4")
@@ -194,20 +214,43 @@ namespace Airport
             } while (validAirport == false);
 
             return OSairportname;
-
-            // check exists !!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         static string typeplane()
         {
             string planetype;
+            Console.WriteLine("Three plane types: Medium narrow body, Large narrow body, Medium wide body");
+            bool plane = false;
 
-            Console.WriteLine("please enter type of plane");
-            planetype = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("please enter type of plane");
+                planetype = Console.ReadLine();
 
-            return planetype;
+                plane = false;
 
-            // check exists !!!!!!!!!!!!!!!!!!!!!!!!!!!
+                if (planetype == "Medium narrow body")
+                {
+                    plane = true;
+                    point.runningcostperseatper100km = 8;
+                    point.maximumflightrangekm = 2650;
+                    point.capacityifallseatsarestandardclass = 180;
+                    point.minimumnumoffirstclassseats = 8;
+    }
+
+                if (planetype == "Large narrow body")
+                {
+                    plane = true;
+                }
+
+                if (planetype == "Medium wide body")
+                {
+                    plane = true;
+                }
+
+            } while (plane == false);
+
+            return planetype;        
         }
 
         static string numfirstseats()
