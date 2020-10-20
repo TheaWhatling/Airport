@@ -430,3 +430,14 @@ namespace Airport
     }
 }
 
+/*
+ To Do list
+
+1. check minimum number of 1st class seats complies with what is entered
+2. find and declare distance between uk airport and overseas airport
+3. change what the user has to enter for uk and overseas airport names from full name to three letter code (as is reqired by task) this includes when it checks if it is valid against the array so change where it checks against in the array
+4. check quit message is displayed when can next run code
+5.clear all inputs (or could give option to only clear certain options inputs?)
+6. re read actual task sheet to check not missing anything
+ 
+ */
