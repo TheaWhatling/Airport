@@ -11,7 +11,14 @@ namespace Airport
         static string[] name;
         static string[] distanceL;
         static string[] distanceB;
-        
+
+        static string ukname;
+        static string OSairportname;
+        static string planetype;
+        static int num1stseats;
+        static int price1stseat;
+        static int pricestandardseat;
+
         struct planebodyvalues
         {
          public string planebodytype;
@@ -100,12 +107,7 @@ namespace Airport
 
         static void menu()
         {
-            string ukname;
-            string OSairportname;
-            string planetype;
-            int num1stseats;
-            int price1stseat;
-            int pricestandardseat;
+            
             string option;
 
             do
@@ -151,6 +153,7 @@ namespace Airport
                 if (option == "4")
                 {
                    num1stseats = Convert.ToInt32(numfirstseats());
+                    // check complies with minimum allowed for plane type
                 }
 
                 if (option == "5")
@@ -173,7 +176,7 @@ namespace Airport
 
 
 
-                    calculatedvalues = Calculate(ukname, OSairportname, planetype, num1stseats, price1stseat, pricestandardseat);
+                    calculatedvalues = Calculate(num1stseats, price1stseat, pricestandardseat);
 
 
 
@@ -234,7 +237,9 @@ namespace Airport
                     //clear();
                 }
 
-            } while (option != "9"); // what happens after they exit? // exit "message" needed here (clear as well?)
+            } while (option != "9"); // exit "message" needed here 
+
+            Console.WriteLine("now quitting session"); // check displays and they can read it (not too fast to read)
 
         }
         static string ukairport()
@@ -356,6 +361,7 @@ namespace Airport
 
             Console.WriteLine("please enter then number of first class seats");
             num1stseats = Console.ReadLine();
+            // check complies with minimum allowed for plane type
              
             return num1stseats;
 
@@ -383,7 +389,7 @@ namespace Airport
 
         }
 
-        static string Calculate(string ukname, string OSairportname, string planetype, int num1stseats, int price1stseat, int pricestandardseat)
+        static string Calculate(int num1stseats, int price1stseat, int pricestandardseat)
         {
 
             int numberofstandardclassseats;
@@ -391,20 +397,24 @@ namespace Airport
             int flightcost;
             int flightincome;
             int flightprofit;
-
             // do i need to declare these if they are in a stuct?
 
-            numberofstandardclassseats = 0;// (capacity if all seats are standard class) - (number of 1st class seats x 2)
-            flightcostperseat = 0;//(running cost per seat per 100 km ) x (distance between the UK airport and the overseas airport) / 100
-            flightcost = 0;// flightcostperseat x (number of first-class seats + number of standardclass seats)
-            flightincome = 0; // number of first-class seats × price of a first-class seat + numberofstandardclassseats × price of a standard-class seat
+
+            numberofstandardclassseats = capacityifallseatsarestandardclass - (num1stseats * 2);  
+            //Each first-class seat takes up space for two standard-class seats.
+           
+            flightcostperseat = runningcostperseatper100km * /*distance between the UK airport and the overseas airport*/ / 100;
+            // need to find distance from which uk airport is to the overseas airport
+
+            flightcost = flightcostperseat * (num1stseats + numberofstandardclassseats);
+           
+            flightincome = (num1stseats * price1stseat) + (numberofstandardclassseats * pricestandardseat); 
+            
             flightprofit = flightincome - flightcost;
 
-            // variables above are assigned 0 for now
-            // note to self: check these calculations are correct against task sheets!!!
 
-            calculatedvalues point = new calculatedvalues(numberofstandardclassseats, flightcostperseat, flightcost, flightincome, flightprofit); 
-
+        calculatedvalues point = new calculatedvalues(numberofstandardclassseats, flightcostperseat, flightcost, flightincome, flightprofit); 
+            // should this be above the actual calculations being done?
 
             return calculatedvalues; 
             // how/what do you return if values are stored in a struct? or do you not return anything?
@@ -416,6 +426,7 @@ namespace Airport
                  // clear all inputs
 
        //  }
-       // // optional so am leaving for now
+       // // not optional as they may want to go through it all again with a different flight/start again!
     }
 }
+
