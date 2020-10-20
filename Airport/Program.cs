@@ -434,6 +434,9 @@ namespace Airport
  To Do list
 
 1. check minimum number of 1st class seats complies with what is entered
+   if the number of first-class seats entered is not 0 then:
+       if the number of first-class seats is less than the ‘minimum number of first-class seats’ then a suitable error message should be displayed and the user returned to the main menu
+       if the number of first-class seats is greater than half the ‘capacity if all seats are standardclass’ then a suitable error message should be displayed and the user returned to the main menu.
 
 2. find and declare distance between uk airport and overseas airport
 
@@ -443,10 +446,18 @@ namespace Airport
    displayed
    if overseas airport is not valid then a suitable error message should be displayed
 
-4. check quit message is displayed when can next run code
+4. the program should check that codes for the UK and overseas airports have been entered. If not then a suitable error message should be displayed and the user returned to the main menu
+   
+   the program should check if the type of aircraft has been entered. If not then a suitable error message should be displayed and the user returned to the main menu
 
-5.clear all inputs (or could give option to only clear certain options inputs?)
+   the program should check that the number of first-class seats has been entered. If not then a suitable error message should be displayed and the user returned to the main menu
 
-6. re read actual task sheet to check not missing anything
+   the program should check that the maximum flight range for the type of aircraft is greater than or equal to the distance between the airports. If not then a suitable error message should be displayed and the user returned to the main menu
+
+5. check quit message is displayed when can next run code
+
+6.clear all inputs (or could give option to only clear certain options inputs?)
+
+7. re read actual task sheet to check not missing anything
  
  */
