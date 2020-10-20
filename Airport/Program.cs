@@ -183,7 +183,16 @@ namespace Airport
                     // will need paramenters 
                     // what are passing back?
                     // what if not all variables have a value yet?
+
+
+
+
+
                     calculatedvalues = Calculate(ukname, OSairportname, planetype, num1stseats, price1stseat, pricestandardseat);
+
+
+
+
 
 
                     /* sample code from website changed to fit own variable names
@@ -215,6 +224,24 @@ namespace Airport
                         Console.WriteLine(point.flightprofit); //output: 50 
 
                      */
+
+
+
+
+
+                    Console.WriteLine("number of standard class seats = ");
+                    Console.WriteLine(point.numberofstandardclassseats);
+                    Console.WriteLine("flight cost per seat = ");
+                    Console.WriteLine(point.flightcostperseat);
+                    Console.WriteLine("flight cost = ");
+                    Console.WriteLine(point.flightcost);
+                    Console.WriteLine("flight income = ");
+                    Console.WriteLine(point.flightincome);
+                    Console.WriteLine("flight profit = ");
+                    Console.WriteLine(point.flightprofit);
+
+
+
                 }
 
                 if (option == "8")
@@ -223,6 +250,7 @@ namespace Airport
                 }
 
             } while (option != "9"); // what happens after they exit? // exit "message" needed here (clear as well?)
+
         }
         static string ukairport()
         {
@@ -370,34 +398,25 @@ namespace Airport
         static string Calculate(string ukname, string OSairportname, string planetype, int num1stseats, int price1stseat, int pricestandardseat)
         {
 
-            /*
-            Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
+            int numberofstandardclassseats;
+            int flightcostperseat;
+            int flightcost;
+            int flightincome;
+            int flightprofit;
 
-            Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) × distance between the UK airport and the overseas airport / 100
 
-            Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
+            numberofstandardclassseats = // (type of planes structs value for capacity if all seats are standard class) - (type of planes structs value for number of 1st class seats x 2)
+            flightcostperseat = //(type of planes structs value for running cost per seat per 100 km ) x (type of planes structs value for distance between the UK airport and the overseas airport) / 100
+            flightcost = // flightcostperseat x (type of planes structs value for number of first-class seats + type of planes structs value for number of standardclass seats)
+            flightincome = // type of planes structs value for number of first-class seats × type of planes structs value for price of a first-class seat + numberofstandardclassseats × type of planes structs value for price of a standard-class seat
+            flightprofit = //flightincome - flightcost
 
-            Flight income number of first-class seats × price of a first-class seat + number of standard-class seats × price of a standard-class seat
+            // note to self: check these calculations are correct against task sheets!!!
 
-            Flight profit flight income - flight cost 
-            */
+            calculatedvalues point = new calculatedvalues(numberofstandardclassseats, flightcostperseat, flightcost, flightincome, flightprofit); 
 
-            //calculatedvalues point;
-            //point.numberofstandardclassseats = ;
-            //point.flightcostperseat = ;
-            //point.flightcost= ;
-            //point.flightincome = ;
-            //point.flightprofit = ;
 
-            calculatedvalues point = new calculatedvalues(10, 20, 30, 40, 50);
-
-            //Console.WriteLine(point.numberofstandardclassseats); 
-            //Console.WriteLine(point.flightcostperseat); 
-            //Console.WriteLine(point.flightcost); 
-            //Console.WriteLine(point.flightincome); 
-            //Console.WriteLine(point.flightprofit); 
-
-            return calculatedvalues;
+            return calculatedvalues; // how/ what do you return if values are stored in a struct? or do you not return anything?
 
         }
 
