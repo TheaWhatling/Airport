@@ -19,8 +19,31 @@ namespace Airport
          public int capacityifallseatsarestandardclass;
          public int minimumnumoffirstclassseats;
         }
-        mediumnarrowbodyvalues point;
 
+        struct largenarrowbodyvalues
+        {
+            public int runningcostperseatper100km;
+            public int maximumflightrangekm;
+            public int capacityifallseatsarestandardclass;
+            public int minimumnumoffirstclassseats;
+        }
+
+        struct mediumwidebodyvalues
+        {
+            public int runningcostperseatper100km;
+            public int maximumflightrangekm;
+            public int capacityifallseatsarestandardclass;
+            public int minimumnumoffirstclassseats;
+        }
+
+        struct calculate
+        {
+            public int numberofstandardclassseats;
+            public int flightcostperseat;
+            public int flightcost;
+            public int flightincome;
+            public int flightprofit;
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -147,9 +170,10 @@ namespace Airport
 
                 if (option == "7")
                 {
-                              // will need paramenters // check if missing inputs
-                    //calculate();
-                              // what are passing back?
+                              // will need paramenters 
+                    calculate(ukname, OSairportname, planetype, num1stseats, price1stseat, pricestandardseat);
+                    // what are passing back?
+                    // what if not all variables have a value yet?
                 }
 
                 if (option == "8")
@@ -232,6 +256,8 @@ namespace Airport
                 if (planetype == "Medium narrow body")
                 {
                     plane = true;
+
+                    mediumnarrowbodyvalues point;
                     point.runningcostperseatper100km = 8;
                     point.maximumflightrangekm = 2650;
                     point.capacityifallseatsarestandardclass = 180;
@@ -241,11 +267,25 @@ namespace Airport
                 if (planetype == "Large narrow body")
                 {
                     plane = true;
+
+                    largenarrowbodyvalues point;
+                    point.runningcostperseatper100km = 7;
+                    point.maximumflightrangekm = 5600;
+                    point.capacityifallseatsarestandardclass = 220;
+                    point.minimumnumoffirstclassseats = 10;
                 }
 
                 if (planetype == "Medium wide body")
                 {
                     plane = true;
+
+                    mediumwidebodyvalues point;
+                    point.runningcostperseatper100km = 5;
+                    point.maximumflightrangekm = 4050;
+                    point.capacityifallseatsarestandardclass = 406;
+                    point.minimumnumoffirstclassseats = 14;
+
+                    //Console.WriteLine(point.maximumflightrangekm); // outputs value in this point (4050) see https://www.tutorialsteacher.com/csharp/csharp-struct
                 }
 
             } while (plane == false);
@@ -286,36 +326,36 @@ namespace Airport
 
         }
 
-       // static string calculate()
-       // {
-                 // pass parameters
+        static string calculate()
+        {
+            // pass parameters
+            // what if not all variables have a value yet
 
-                 /*
-                 Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
-                 Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) ×
-                 distance between the UK airport and the overseas airport / 100
-                 Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
-                 Flight income number of first-class seats × price of a first-class seat + number of
-                 standard-class seats × price of a standard-class seat
-                 Flight profit flight income - flight cost 
-                 */
+            /*
+            Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
 
-       //  }
+            Flight cost per seat running cost per seat per 100 km (for the selected type of aircraft) × distance between the UK airport and the overseas airport / 100
+
+            Flight cost flight cost per seat × (number of first-class seats + number of standardclass seats)
+
+            Flight income number of first-class seats × price of a first-class seat + number of standard-class seats × price of a standard-class seat
+
+            Flight profit flight income - flight cost 
+            */
+            calculate point;
+            point.numberofstandardclassseats = 8;
+            point.flightcostperseat = 2650;
+            point.flightcost= 180;
+            point.flightincome = 8;
+            point.flightprofit = 2;
+
+        }
 
        //  static string clear()
        //  {
                  // clear all inputs
 
        //  }
-
-
-        /*need to create arrays/ an array to hold data about; 
-         * plane type
-         * running cost per seat per 100 km
-         * maximum flight range(km)
-         * capacity if all seats are standard-class
-         * minimum number of firstclass seats(if there are any)
-        */
 
     }
 }
