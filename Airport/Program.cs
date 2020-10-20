@@ -180,8 +180,8 @@ namespace Airport
 
                 if (option == "7")
                 {
-                    // will need paramenters 
-                    // what are passing back?
+                    // parameters 
+                    // what are passing back? need to pass back?
                     // what if not all variables have a value yet?
 
 
@@ -398,11 +398,11 @@ namespace Airport
         static string Calculate(string ukname, string OSairportname, string planetype, int num1stseats, int price1stseat, int pricestandardseat)
         {
 
-            int numberofstandardclassseats;
-            int flightcostperseat;
-            int flightcost;
-            int flightincome;
-            int flightprofit;
+            //int numberofstandardclassseats;
+            //int flightcostperseat;
+            //int flightcost;
+            //int flightincome;
+            //int flightprofit;
 
 
             numberofstandardclassseats = // (type of planes structs value for capacity if all seats are standard class) - (type of planes structs value for number of 1st class seats x 2)
