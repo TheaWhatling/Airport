@@ -12,28 +12,13 @@ namespace Airport
         static string[] distanceL;
         static string[] distanceB;
         
-        struct mediumnarrowbodyvalues
+        struct planebodyvalues
         {
+         public string planebodytype;
          public int runningcostperseatper100km;
          public int maximumflightrangekm;
          public int capacityifallseatsarestandardclass;
          public int minimumnumoffirstclassseats;
-        }
-
-        struct largenarrowbodyvalues
-        {
-            public int runningcostperseatper100km;
-            public int maximumflightrangekm;
-            public int capacityifallseatsarestandardclass;
-            public int minimumnumoffirstclassseats;
-        }
-
-        struct mediumwidebodyvalues
-        {
-            public int runningcostperseatper100km;
-            public int maximumflightrangekm;
-            public int capacityifallseatsarestandardclass;
-            public int minimumnumoffirstclassseats;
         }
 
         struct calculatedvalues
@@ -326,7 +311,8 @@ namespace Airport
                 {
                     plane = true;
 
-                    mediumnarrowbodyvalues point;
+                    planebodyvalues point;
+                    point.planebodytype = "mediumnarrow";
                     point.runningcostperseatper100km = 8;
                     point.maximumflightrangekm = 2650;
                     point.capacityifallseatsarestandardclass = 180;
@@ -337,7 +323,8 @@ namespace Airport
                 {
                     plane = true;
 
-                    largenarrowbodyvalues point;
+                    planebodyvalues point;
+                    point.planebodytype = "largenarrow";
                     point.runningcostperseatper100km = 7;
                     point.maximumflightrangekm = 5600;
                     point.capacityifallseatsarestandardclass = 220;
@@ -348,7 +335,8 @@ namespace Airport
                 {
                     plane = true;
 
-                    mediumwidebodyvalues point;
+                    planebodyvalues point;
+                    point.planebodytype = "mediumwide";
                     point.runningcostperseatper100km = 5;
                     point.maximumflightrangekm = 4050;
                     point.capacityifallseatsarestandardclass = 406;
