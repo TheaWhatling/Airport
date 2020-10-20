@@ -12,6 +12,8 @@ namespace Airport
         static string[] distanceL;
         static string[] distanceB;
 
+        static int distance;
+
         static string ukname;
         static string OSairportname;
         static string planetype;
@@ -134,6 +136,34 @@ namespace Airport
                 if (option == "2")
                 {
                     OSairportname = overseaairport();
+
+                    if (OSairportname == "JFK")
+                    {
+                        Console.WriteLine("John F Kennedy International");
+                    }
+
+                    if (OSairportname == "ORY")
+                    {
+                        Console.WriteLine("Paris-Orly");
+                    }
+
+                    if (OSairportname == "MAD")
+                    {
+                        Console.WriteLine("Adolfo Suarez Madrid-Barajas");
+                    }
+
+                    if (OSairportname == "AMS")
+                    {
+                        Console.WriteLine("Amsterdam Schiphol");
+                    }
+
+                    if (OSairportname == "CAI")
+                    {
+                        Console.WriteLine("Cairo International");
+                    }
+
+                    // quicker way to do this? and so if airports text file changes these can change to
+
                 }
 
                 if (option == "3")
@@ -153,7 +183,6 @@ namespace Airport
                 if (option == "4")
                 {
                    num1stseats = Convert.ToInt32(numfirstseats());
-                    // check complies with minimum allowed for plane type
                 }
 
                 if (option == "5")
@@ -237,9 +266,9 @@ namespace Airport
                     //clear();
                 }
 
-            } while (option != "9"); // exit "message" needed here 
+            } while (option != "9"); // exit "message" needed here - see below
 
-            Console.WriteLine("now quitting session"); // check displays and they can read it (not too fast to read)
+            Console.WriteLine("now quitting session"); // check displays and they can read it (not too fast to read) 
 
         }
         static string ukairport()
@@ -248,20 +277,27 @@ namespace Airport
             bool validUKairportname = false;
             do
             {
-                Console.WriteLine("please enter Uk airports name");
+                Console.WriteLine("please enter Uk airports name: enter LPL for Liverpool John Lennon or BOH for Bournemouth International");
                 ukname = Console.ReadLine();
 
                 validUKairportname = false;
 
-                if (ukname == "Liverpool John Lennon")
+                if (ukname == "LPL")
                 {
+                    Console.WriteLine("Liverpool John Lennon");
                     validUKairportname = true;
                 }
                 
 
-                if (ukname == "Bournemouth International")
+                if (ukname == "BOH")
                 {
+                    Console.WriteLine("Bournemouth International");
                     validUKairportname = true;
+                }
+
+                if (validUKairportname == false)
+                {
+                    Console.WriteLine("this does not exist");
                 }
 
             } while (validUKairportname == false);
@@ -275,14 +311,14 @@ namespace Airport
             bool validAirport = false;
             do
             {
-                Console.WriteLine("please enter overseas airports name");
+                Console.WriteLine("please enter overseas airports name using its three letter code");
                 OSairportname = Console.ReadLine();
 
                 validAirport = false;
 
-                for (int s = 0; s < name.Length; s = s + 1)
+                for (int s = 0; s < code.Length; s = s + 1)
                 {
-                    if (name[s] == OSairportname)
+                    if (code[s] == OSairportname)
                     {
                         validAirport = true;
                     }
@@ -291,7 +327,7 @@ namespace Airport
                 if (validAirport == false)
 
                 {
-                    Console.WriteLine("doesnt exist");
+                    Console.WriteLine("this does not exist");
                 }
 
             } while (validAirport == false);
@@ -359,10 +395,38 @@ namespace Airport
         {
             string num1stseats;
 
-            Console.WriteLine("please enter then number of first class seats");
-            num1stseats = Console.ReadLine();
-            // check complies with minimum allowed for plane type
-             
+            bool seats = false;
+
+            do
+            {
+                Console.WriteLine("please enter then number of first class seats");
+                num1stseats = Console.ReadLine();
+                Convert.ToInt32(num1stseats);
+
+                seats = false;
+
+                if (num1stseats >= capacityifallseatsarestandardclass)
+                {
+                    Console.WriteLine("error");
+                    seats = false;
+
+                }
+
+                if (num1stseats < minimumnumoffirstclassseats)
+                {
+                    Console.WriteLine("error");
+                    seats = false;
+                }
+
+                else
+                {
+                    seats = true;
+                }
+
+            } while (seats == false);
+
+            Convert.ToString(num1stseats);
+
             return num1stseats;
 
         }
@@ -399,11 +463,20 @@ namespace Airport
             int flightprofit;
             // do i need to declare these if they are in a stuct?
 
+            if (ukname == "LPL")
+            {
+                distance = distanceL[];
+            }
+            if (ukname == "BOH")
+            {
+                distance = distanceB[];
+            }
+            //do not know how to find correct distance from origional text files array
 
             numberofstandardclassseats = capacityifallseatsarestandardclass - (num1stseats * 2);  
             //Each first-class seat takes up space for two standard-class seats.
            
-            flightcostperseat = runningcostperseatper100km * /*distance between the UK airport and the overseas airport*/ / 100;
+            flightcostperseat = runningcostperseatper100km * distance / 100;
             // need to find distance from which uk airport is to the overseas airport
 
             flightcost = flightcostperseat * (num1stseats + numberofstandardclassseats);
@@ -432,31 +505,17 @@ namespace Airport
 
 /*
  To Do list
+1. take structures out of if statements? 
 
-1. check minimum number of 1st class seats complies with what is entered
-   if the number of first-class seats entered is not 0 then:
-       if the number of first-class seats is less than the ‘minimum number of first-class seats’ then a suitable error message should be displayed and the user returned to the main menu
-       if the number of first-class seats is greater than half the ‘capacity if all seats are standardclass’ then a suitable error message should be displayed and the user returned to the main menu.
+2. find and declare distance between uk airport and overseas airport to use in calculations- started to complete in calculate subroutine but, do not know how to find correct distance from origional text files array
 
-2. find and declare distance between uk airport and overseas airport
+3. if the code for the overseas airport is valid then the full name of the overseas airport should be displayed - completed - however is there a quicker way to do this? and so if airports text file changes these can change to...
 
-3. change what the user has to enter for uk and overseas airport names from full name to three letter code (as is reqired by task) this includes when it checks if it is valid against the array so change where it checks against in the array 
-   (Liverpool John Lennon = LPL, Bournemouth International = BOH
-   if the code for the overseas airport is valid then the full name of the overseas airport should be
-   displayed
-   if overseas airport is not valid then a suitable error message should be displayed
-
-4. the program should check that codes for the UK and overseas airports have been entered. If not then a suitable error message should be displayed and the user returned to the main menu
-   
-   the program should check if the type of aircraft has been entered. If not then a suitable error message should be displayed and the user returned to the main menu
-
-   the program should check that the number of first-class seats has been entered. If not then a suitable error message should be displayed and the user returned to the main menu
-
-   the program should check that the maximum flight range for the type of aircraft is greater than or equal to the distance between the airports. If not then a suitable error message should be displayed and the user returned to the main menu
+4. what if not all variables in options in menu have a value yet? when passed to calculate - will give incorrect results
 
 5. check quit message is displayed when can next run code
 
-6.clear all inputs (or could give option to only clear certain options inputs?)
+6. clear all inputs (or could give option to only clear certain options inputs?)
 
 7. re read actual task sheet to check not missing anything
  
