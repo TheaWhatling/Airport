@@ -386,25 +386,28 @@ namespace Airport
         static string Calculate(string ukname, string OSairportname, string planetype, int num1stseats, int price1stseat, int pricestandardseat)
         {
 
-            //int numberofstandardclassseats;
-            //int flightcostperseat;
-            //int flightcost;
-            //int flightincome;
-            //int flightprofit;
+            int numberofstandardclassseats;
+            int flightcostperseat;
+            int flightcost;
+            int flightincome;
+            int flightprofit;
 
+            // do i need to declare these if they are in a stuct?
 
-            numberofstandardclassseats = // (type of planes structs value for capacity if all seats are standard class) - (type of planes structs value for number of 1st class seats x 2)
-            flightcostperseat = //(type of planes structs value for running cost per seat per 100 km ) x (type of planes structs value for distance between the UK airport and the overseas airport) / 100
-            flightcost = // flightcostperseat x (type of planes structs value for number of first-class seats + type of planes structs value for number of standardclass seats)
-            flightincome = // type of planes structs value for number of first-class seats × type of planes structs value for price of a first-class seat + numberofstandardclassseats × type of planes structs value for price of a standard-class seat
-            flightprofit = //flightincome - flightcost
+            numberofstandardclassseats = 0;// (capacity if all seats are standard class) - (number of 1st class seats x 2)
+            flightcostperseat = 0;//(running cost per seat per 100 km ) x (distance between the UK airport and the overseas airport) / 100
+            flightcost = 0;// flightcostperseat x (number of first-class seats + number of standardclass seats)
+            flightincome = 0; // number of first-class seats × price of a first-class seat + numberofstandardclassseats × price of a standard-class seat
+            flightprofit = flightincome - flightcost;
 
+            // variables above are assigned 0 for now
             // note to self: check these calculations are correct against task sheets!!!
 
             calculatedvalues point = new calculatedvalues(numberofstandardclassseats, flightcostperseat, flightcost, flightincome, flightprofit); 
 
 
-            return calculatedvalues; // how/ what do you return if values are stored in a struct? or do you not return anything?
+            return calculatedvalues; 
+            // how/what do you return if values are stored in a struct? or do you not return anything?
 
         }
 
@@ -413,6 +416,6 @@ namespace Airport
                  // clear all inputs
 
        //  }
-
+       // // optional so am leaving for now
     }
 }
