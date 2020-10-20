@@ -11,7 +11,7 @@ namespace Airport
         static string[] name;
         static string[] distanceL;
         static string[] distanceB;
-
+        
         struct mediumnarrowbodyvalues
         {
          public int runningcostperseatper100km;
@@ -36,13 +36,24 @@ namespace Airport
             public int minimumnumoffirstclassseats;
         }
 
-        struct calculate
+        struct calculatedvalues
         {
             public int numberofstandardclassseats;
             public int flightcostperseat;
             public int flightcost;
             public int flightincome;
             public int flightprofit;
+
+            public calculatedvalues(int numberofstandardclassseats, int flightcostperseat, int flightcost, int flightincome, int flightprofit)
+            {
+
+                this.numberofstandardclassseats = a;
+                this.flightcostperseat = b;
+                this.flightcost = c;
+                this.flightincome = d;
+                this.flightprofit = e;
+            }
+
         }
         static void Main(string[] args)
         {
@@ -111,7 +122,6 @@ namespace Airport
             int price1stseat;
             int pricestandardseat;
             string option;
-            // will need more variables for calculate and clear returns
 
             do
             {
@@ -170,10 +180,41 @@ namespace Airport
 
                 if (option == "7")
                 {
-                              // will need paramenters 
-                    calculate(ukname, OSairportname, planetype, num1stseats, price1stseat, pricestandardseat);
+                    // will need paramenters 
                     // what are passing back?
                     // what if not all variables have a value yet?
+                    calculatedvalues = Calculate(ukname, OSairportname, planetype, num1stseats, price1stseat, pricestandardseat);
+
+
+                    /* sample code from website changed to fit own variable names
+                     
+                        struct calculatedvalues
+                        {
+                                public int numberofstandardclassseats;
+                                public int flightcostperseat;
+                                public int flightcost;
+                                public int flightincome;
+                                public int flightprofit;
+
+                                public calculatedvalues(int numberofstandardclassseats, int flightcostperseat, int flightcost, int flightincome, int flightprofit)
+                                {
+                                    this.numberofstandardclassseats = a;
+                                    this.flightcostperseat = b;
+                                    this.flightcost = c;
+                                    this.flightincome = d;
+                                    this.flightprofit = e;
+                                }
+                        }
+
+                        calculatedvalues point = new calculatedvalues(10, 20, 30, 40, 50);
+
+                        Console.WriteLine(point.numberofstandardclassseats); //output: 10  
+                        Console.WriteLine(point.flightcostperseat); //output: 20  
+                        Console.WriteLine(point.flightcost); //output: 30 
+                        Console.WriteLine(point.flightincome); //output: 40 
+                        Console.WriteLine(point.flightprofit); //output: 50 
+
+                     */
                 }
 
                 if (option == "8")
@@ -326,10 +367,8 @@ namespace Airport
 
         }
 
-        static string calculate()
+        static string Calculate(string ukname, string OSairportname, string planetype, int num1stseats, int price1stseat, int pricestandardseat)
         {
-            // pass parameters
-            // what if not all variables have a value yet
 
             /*
             Number of standardclass seats Capacity if all seats are standard-class – Number of first-class seats x 2
@@ -342,12 +381,23 @@ namespace Airport
 
             Flight profit flight income - flight cost 
             */
-            calculate point;
-            point.numberofstandardclassseats = 8;
-            point.flightcostperseat = 2650;
-            point.flightcost= 180;
-            point.flightincome = 8;
-            point.flightprofit = 2;
+
+            //calculatedvalues point;
+            //point.numberofstandardclassseats = ;
+            //point.flightcostperseat = ;
+            //point.flightcost= ;
+            //point.flightincome = ;
+            //point.flightprofit = ;
+
+            calculatedvalues point = new calculatedvalues(10, 20, 30, 40, 50);
+
+            //Console.WriteLine(point.numberofstandardclassseats); 
+            //Console.WriteLine(point.flightcostperseat); 
+            //Console.WriteLine(point.flightcost); 
+            //Console.WriteLine(point.flightincome); 
+            //Console.WriteLine(point.flightprofit); 
+
+            return calculatedvalues;
 
         }
 
