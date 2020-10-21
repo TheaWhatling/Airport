@@ -209,8 +209,6 @@ namespace Airport
                 {
                     
 
-
-
                     if (num1stseats != 0 && price1stseat != 0 && pricestandardseat != 0 && p.planebodytype != "")
                     {
 
@@ -418,11 +416,12 @@ namespace Airport
             {
                 Console.WriteLine("please enter then number of first class seats");
                 num1stseatst = Console.ReadLine();
+
                 num1seats = Convert.ToInt32(num1stseatst);
 
                 seats = false;
 
-                if (num1stseats >= p1.capacityifallseatsarestandardclass)
+                if (num1stseats >= p1.capacityifallseatsarestandardclass) //needs to be; if num1stseats >= number of standard class seats/2
                 {
                     Console.WriteLine("error");
                     seats = false;
@@ -570,6 +569,7 @@ namespace Airport
 
 /*
 To Do list
+0. needs to be; if num1stseats >= number of standard class seats/2 
 
 1. check plane type for flight can do flight distance complying to its max flight distance.
 
