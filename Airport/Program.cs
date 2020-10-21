@@ -558,8 +558,11 @@ namespace Airport
             // in the method signiture
 
         }
-
-
+  //  static string clear()
+  //  {
+  // clear all inputs
+  //  }
+  // // not optional as they may want to go through it all again with a different flight/start again!
 
     }
 
@@ -570,9 +573,7 @@ To Do list
 
 1. check plane type for flight can do flight distance complying to its max flight distance.
 
-2. what if not all variables in options in menu have a value yet? when passed to calculate - will give incorrect results
-
-3. check quit message is displayed when can next run code
+2. what if not all variables in options in menu have a value yet? when passed to calculate - will give incorrect results - i think is already sorted - test when have sorted entering number of 1st class seats error
 
 4. clear all inputs (or could give option to only clear certain options inputs?)
 
