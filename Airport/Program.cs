@@ -18,8 +18,8 @@ namespace Airport
 
         static string ukname;
         static string OSairportname;
-
-        static int num1stseats;
+        // Oh two variables with the same name !!!!!!
+        //static int num1stseats;
         static int price1stseat;
         static int pricestandardseat;
 
@@ -118,7 +118,7 @@ namespace Airport
             p.maximumflightrangekm = 0;
             p.runningcostperseatper100km = 0;
             p.capacityifallseatsarestandardclass = 0;
-
+            int noSeats=0;
             calculatedvalues cv;
             string option;
 
@@ -192,7 +192,7 @@ namespace Airport
 
                 if (option == "4")
                 {
-                    num1stseats = Convert.ToInt32(numfirstseats(p));
+                    noSeats = Convert.ToInt32(numfirstseats(p));
                 }
 
                 if (option == "5")
@@ -209,10 +209,10 @@ namespace Airport
                 {
                     
 
-                    if (num1stseats != 0 && price1stseat != 0 && pricestandardseat != 0 && p.planebodytype != "")
+                    if (noSeats != 0 && price1stseat != 0 && pricestandardseat != 0 && p.planebodytype != "")
                     {
 
-                        cv = Calculate(num1stseats, price1stseat, pricestandardseat, p);
+                        cv = Calculate(noSeats, price1stseat, pricestandardseat, p);
 
                         Console.WriteLine("number of standard class seats = ");
                         Console.WriteLine(cv.numberofstandardclassseats);
@@ -347,7 +347,7 @@ namespace Airport
             string planetype;
             Console.WriteLine("Three plane types: Medium narrow body, Large narrow body, Medium wide body");
             bool plane = false;
-
+           
             planebodyvalues point; // moved point to have scope across whole function
             point.planebodytype = "";
             point.runningcostperseatper100km = 0;
@@ -420,30 +420,32 @@ namespace Airport
                 num1seats = Convert.ToInt32(num1stseatst);
 
                 seats = false;
-
-                if (num1stseats >= p1.capacityifallseatsarestandardclass) //needs to be; if num1stseats >= number of standard class seats/2
+                /// oh used the wrong variable
+                if (num1seats >= p1.capacityifallseatsarestandardclass || num1seats < p1.minimumnumoffirstclassseats) //needs to be; if num1stseats >= number of standard class seats/2
                 {
                     Console.WriteLine("error");
                     seats = false;
 
-                }
-
-                if (num1stseats < p1.minimumnumoffirstclassseats)
-                {
-                    Console.WriteLine("error");
-                    seats = false;
-                }
-
-                else
+                }else
                 {
                     seats = true;
                 }
+
+              //  if ()
+              //  {
+             //       Console.WriteLine("error");
+//seats = false;
+                
+                // ok this is the problem. first number of seats will be checked against max seats, lets say it is below capacity
+                // then it is compared to minimum seats. The else is(was) attached to the minimum seats comparison. Therefore seats could be set
+                // to true even if the user selected too many seats
+                
 
             } while (seats == false);
 
             //Convert.ToString(num1stseatst);
 
-            return num1stseats;
+            return num1seats;
 
         }
 
