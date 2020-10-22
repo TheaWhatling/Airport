@@ -273,9 +273,9 @@ namespace Airport
                     //clear();
                 }
 
-            } while (option != "9"); // exit "message" needed here - see below
+            } while (option != "9"); 
 
-            Console.WriteLine("now quitting session"); // check displays and they can read it (not too fast to read) 
+            Console.WriteLine("now quitting session"); 
 
         }
         static string ukairport()
@@ -342,7 +342,7 @@ namespace Airport
             return OSairportname;
         }
 
-        static planebodyvalues typeplane() //changed return type
+        static planebodyvalues typeplane() 
         {
             string planetype;
             Console.WriteLine("Three plane types: Medium narrow body, Large narrow body, Medium wide body");
@@ -431,11 +431,7 @@ namespace Airport
                     seats = true;
                 }
 
-              //  if ()
-              //  {
-             //       Console.WriteLine("error");
-//seats = false;
-                
+              
                 // ok this is the problem. first number of seats will be checked against max seats, lets say it is below capacity
                 // then it is compared to minimum seats. The else is(was) attached to the minimum seats comparison. Therefore seats could be set
                 // to true even if the user selected too many seats
@@ -550,13 +546,12 @@ namespace Airport
 
 
             calculatedvalues point = new calculatedvalues(numberofstandardclassseats, flightcostperseat, flightcost, flightincome, flightprofit);
-            // should this be above the actual calculations being done?
+            
 
             return point;
             // how/what do you return if values are stored in a struct? or do you not return anything?
-
-            // you can retuen an instance of the struct, as you have you just need to add calculated values as a return type
-            // in the method signiture
+            // answer = 
+            // you can retuen an instance of the struct, as you have you just need to add calculated values as a return type in the method signiture
 
         }
   //  static string clear()
@@ -571,14 +566,13 @@ namespace Airport
 
 /*
 To Do list
-0. needs to be; if num1stseats >= number of standard class seats/2 
+
+0. needs to be; if num1stseats >= number of standard class seats/2       (is it already?)
 
 1. check plane type for flight can do flight distance complying to its max flight distance.
 
-2. what if not all variables in options in menu have a value yet? when passed to calculate - will give incorrect results - i think is already sorted - test when have sorted entering number of 1st class seats error
+2. clear all inputs (or could give option to only clear certain options inputs?)
 
-4. clear all inputs (or could give option to only clear certain options inputs?)
-
-5. re read actual task sheet to check not missing anything
+3. re read actual task sheet to check not missing anything
 
  */ 
